@@ -1,0 +1,30 @@
+toolsets = vs2013;
+
+vs2013.solutionfile = ../VC12/Synthetiverse.sln;
+
+setting WXWIDGETS_ROOT
+{
+    help = "Path to the WxWidgets installation";
+    default = '$(WXWIN)';
+}
+
+program Synthetiverse
+{
+    win32-subsystem = windows;
+
+    includedirs += $(WXWIDGETS_ROOT)/include;
+    includedirs += $(WXWIDGETS_ROOT)/include/msvc;
+    libdirs += $(WXWIDGETS_ROOT)/lib/vc_lib;
+
+    headers
+    {
+        ../../Source/App.h
+        ../../Source/Frame.h
+    }
+
+    sources
+    {
+        ../../Source/App.cpp
+        ../../Source/Frame.cpp
+    }
+}
