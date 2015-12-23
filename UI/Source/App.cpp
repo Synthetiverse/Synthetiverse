@@ -27,7 +27,17 @@ wxIMPLEMENT_APP(App);
 
 bool App::OnInit()
 {
-	Frame* frame = new Frame("Synthetiverse");
+	m_docManager = new wxDocManager();
+	m_docManager->SetMaxDocsOpen(1);
+
+	Frame* frame = new Frame(m_docManager, "Synthetiverse");
 	frame->Show(true);
+
 	return true;
+}
+
+int App::OnExit()
+{
+	delete m_docManager;
+	return 0;
 }

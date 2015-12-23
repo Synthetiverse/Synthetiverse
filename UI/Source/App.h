@@ -24,11 +24,16 @@
 #define _SYNTHETIVERSE_APP_H_
 
 #include <wx/app.h>
+#include <wx/docview.h>
 
 class App : public wxApp
 {
 public:
 	virtual bool OnInit();
+	virtual int OnExit();
+
+private:
+	wxDocManager* m_docManager;
 };
 
 #endif

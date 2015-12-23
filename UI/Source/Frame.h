@@ -23,12 +23,15 @@
 #ifndef _SYNTHETIVERSE_FRAME_H_
 #define _SYNTHETIVERSE_FRAME_H_
 
-#include <wx/frame.h>
+#include <wx/docview.h>
 
-class Frame : public wxFrame
+class Frame : public wxDocParentFrame
 {
 public:
-	Frame(const wxString& title);
+	Frame(wxDocManager* manager, const wxString& title);
+
+private:
+	void CreateMenuBar();
 };
 
 #endif

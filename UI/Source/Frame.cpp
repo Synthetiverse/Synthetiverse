@@ -21,8 +21,22 @@
 */
 
 #include "Frame.h"
+#include <wx/menu.h>
 
-Frame::Frame(const wxString& title)
-	: wxFrame(NULL, wxID_ANY, title)
+Frame::Frame(wxDocManager* manager, 
+			 const wxString& title)
+	: wxDocParentFrame(manager, NULL, wxID_ANY, title)
 {
+	CreateMenuBar();
+}
+
+void Frame::CreateMenuBar()
+{
+	wxMenuBar* menuBar = new wxMenuBar;
+
+	wxMenu* menuFile = new wxMenu;
+	menuFile->Append(wxID_EXIT);
+	menuBar->Append(menuFile, "&File");
+
+	SetMenuBar(menuBar);
 }
